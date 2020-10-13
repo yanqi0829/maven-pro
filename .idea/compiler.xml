@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="big-data" />
-        <module name="alipay" />
         <module name="account-email" />
+        <module name="jvm" />
+        <module name="kafka" />
         <module name="jdbc" />
+        <module name="alipay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

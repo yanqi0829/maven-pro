@@ -20,6 +20,8 @@
         <module>alipay</module>
         <module>big-data</module>
         <module>jdbc</module>
+        <module>jvm</module>
+        <module>kafka</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>
