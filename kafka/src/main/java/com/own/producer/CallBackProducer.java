@@ -25,6 +25,10 @@ import java.util.concurrent.Future;
  * bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic fistKafka
  * 7.启动消费者  --from-beginning 从头消费
  * bin\windows\kafka-console-consumer.bat --zookeeper localhost:2181 --topic fistKafka --from-beginning
+ * 8.关闭kafka
+ * bin\windows\kafka-server-stop.bat
+ * 9.关闭zookeeper
+ * bin\windows\zookeeper-server-stop.bat
  */
 public class CallBackProducer {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
