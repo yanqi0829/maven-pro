@@ -22,6 +22,7 @@
         <module>jdbc</module>
         <module>jvm</module>
         <module>kafka</module>
+        <module>flink</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>
