@@ -1,5 +1,6 @@
 package com.own.api;
 
+import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -38,7 +39,14 @@ public class SourceTest {
 //        api.print("stream1").setParallelism(1); //setParallelism(6)
 //        api.print("stream2").setParallelism(1);
 //        source3.print("stream3").setParallelism(2);
-        source4.print("stream4").setParallelism(1);
+        source3.map(new RichMapFunction<String, String>() {
+
+            @Override
+            public String map(String s) throws Exception {
+                return null;
+            }
+        });
+        source3.print("stream3").setParallelism(1);
         env.execute("api test");
     }
 
