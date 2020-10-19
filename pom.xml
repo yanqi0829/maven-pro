@@ -99,7 +99,7 @@
         <pluginManagement>
             <plugins>
                 <!--            创建项目源码jar包
-           mvn help:describe -Dplugin=org.apache.maven.plugins:maven-source-plugin:2.1.1 -Ddetail  查看插件详细信息
+           mvn help:describe -Dplugin=org.apache.maven.plugins:maven-api-plugin:2.1.1 -Ddetail  查看插件详细信息
                            -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

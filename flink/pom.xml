@@ -30,6 +30,7 @@
             <artifactId>flink-connector-kafka_${scala.version}</artifactId>
             <version>${flink.version}</version>
         </dependency>
+
     </dependencies>
 
 

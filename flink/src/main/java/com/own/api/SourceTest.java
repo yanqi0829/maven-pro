@@ -1,4 +1,4 @@
-package com.own.source;
+package com.own.api;
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
@@ -35,11 +35,11 @@ public class SourceTest {
         DataStreamSource<String> source3 = env.addSource(new FlinkKafkaConsumer<String>("fistKafka1", new SimpleStringSchema(), props));
         //4自定义Source（一般个人测试使用）
         DataStreamSource<SensorReading> source4 = env.addSource(new SensorSource());
-//        source.print("stream1").setParallelism(1); //setParallelism(6)
-//        source.print("stream2").setParallelism(1);
+//        api.print("stream1").setParallelism(1); //setParallelism(6)
+//        api.print("stream2").setParallelism(1);
 //        source3.print("stream3").setParallelism(2);
         source4.print("stream4").setParallelism(1);
-        env.execute("source test");
+        env.execute("api test");
     }
 
 
