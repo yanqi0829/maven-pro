@@ -10,8 +10,61 @@
     <artifactId>flink</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <properties>
+<!--        关于字符集-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+<!--        jdk的版本-->
+        <java.version>1.8</java.version>
+
+<!--日志框架log4j，以及升级版logback对应的版本号-->
+        <logback.version>1.1.8</logback.version>
+        <slf4j.version>1.7.22</slf4j.version>
+        <log4j.version>1.2.16</log4j.version>
+
+<!--操作json格式数据的相应的框架-->
+        <fastjson.version>1.2.29</fastjson.version>
+        <json-path.version>2.4.0</json-path.version>
+        <gson.version>2.8.5</gson.version>
+        <guava.version>21.0</guava.version>   <!--google对javaAPI扩充类库-->
+
+<!--        mysql驱动-->
+        <mysql.jdbc.version>5.1.44</mysql.jdbc.version>
+
+        <!--谷歌关于缓存的api-->
+        <protobuf.version>3.5.1</protobuf.version>
+
+<!--关于字符串 io流 csv文件操作数据集-->
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-io.version>3.4</commons-io.version>
+        <commons-csv.version>3.4</commons-csv.version>
+<!--        rockdb 内嵌的列式数据库-->
+        <rockdb>6.1.2</rockdb>
+<!--        parquet压缩格式对应的依赖-->
+        <parquet-hadoop>1.10.1</parquet-hadoop>
+<!--        avro序列化框架-->
+        <parquet-avro>1.10.1</parquet-avro>
+        <avro.version>1.9.0</avro.version>
+<!--        redis分布式集群-->
+        <jedis.version>3.1.0</jedis.version>
+<!--        alibaba druid连接池-->
+        <druid.version>1.1.12</druid.version>
+
         <flink.version>1.9.1</flink.version>
+        <flink.table.version>1.9.1</flink.table.version>
+        <flink.redis.version>1.1.5</flink.redis.version>
+<!--        scala语言主版本-->
         <scala.version>2.12</scala.version>
+<!--        scala语言详细版本-->
+        <scala.detail.version>2.12.3</scala.detail.version>
+<!--        zookeeper客户端依赖-->
+        <zk.client.version>0.11</zk.client.version>
+        <kafka.version>1.1.1</kafka.version>
+        <es.version>5.6.3</es.version>
+<!--        flink与twitter公司hbc-core进行整合-->
+        <hbc-core.version>2.2.0</hbc-core.version>
+<!--        数据序列化技术-->
+        <kryo.version>3.0.3</kryo.version>
     </properties>
     <dependencies>
         <dependency>

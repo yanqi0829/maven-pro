@@ -23,6 +23,7 @@
         <module>jvm</module>
         <module>kafka</module>
         <module>flink</module>
+        <module>nio</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>

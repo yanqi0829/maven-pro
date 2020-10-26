@@ -22,7 +22,7 @@ import java.util.concurrent.Future;
  * 5.查看 topic list
  * bin\windows\kafka-topics.bat  --list --zookeeper localhost:2181
  * 6.启动生产者
- * bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic fistKafka
+ * bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic fistKafka1
  * 7.启动消费者  --from-beginning 从头消费
  * bin\windows\kafka-console-consumer.bat --zookeeper localhost:2181 --topic fistKafka --from-beginning
  * 8.关闭kafka
@@ -41,7 +41,7 @@ public class CallBackProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         long a = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("fistKafka1", 0, null, "低版本发送消息kafka1" + i), new Callback() {
+            producer.send(new ProducerRecord<String, String>("fistKafka1", 0, null, "send message kafka" + i), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
                     if (exception == null) {
