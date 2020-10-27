@@ -19,14 +19,18 @@ public class MetricsTest {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.enableCheckpointing(3000);
         //从kafka读取数据
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer");
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+//        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         FlinkKafkaConsumer<String> kafkaConsumer = new FlinkKafkaConsumer<>("fistKafka1", new SimpleStringSchema(), props);
+        kafkaConsumer.setStartFromEarliest();
+
+        kafkaConsumer.setCommitOffsetsOnCheckpoints(true);
         DataStream<String> source3 = env.addSource(kafkaConsumer);
 
         FlinkKafkaProducer<String> sinkProducer = new FlinkKafkaProducer<>("localhost:9092", "sinkTest", new SimpleStringSchema());

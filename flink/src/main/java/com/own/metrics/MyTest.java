@@ -10,14 +10,15 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 
+import java.util.Map;
 import java.util.Properties;
 
 public class MyTest {
-    Integer xxxxx=5555;
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.enableCheckpointing(3000);
+        //开启checkpoint
+        env.enableCheckpointing(2000);
         //从kafka读取数据
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -26,13 +27,14 @@ public class MyTest {
 //        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        TestKafkaConsumer<String> kafkaConsumer = new TestKafkaConsumer<>("fistKafka1", new TestKafkaSimpleStringSchema(), props);
-        kafkaConsumer.setStartFromEarliest();
-
+        //
+        TestKafkaConsumer<String> kafkaConsumer = new TestKafkaConsumer<>("fistKafkaTest", new TestKafkaSimpleStringSchema(), props);
+//        FlinkKafkaConsumer<String> kafkaConsumer = new FlinkKafkaConsumer<>("fistKafkaTest", new SimpleStringSchema(), props);
+        //从最新的数据开始进行消费，忽略存储的offset信息
+        kafkaConsumer.setStartFromLatest();
         kafkaConsumer.setCommitOffsetsOnCheckpoints(true);
         DataStream<String> source3 = env.addSource(kafkaConsumer);
-
-        FlinkKafkaProducer<String> sinkProducer = new FlinkKafkaProducer<>("localhost:9092", "sinkTest", new SimpleStringSchema());
+//        FlinkKafkaProducer<String> sinkProducer = new FlinkKafkaProducer<>("localhost:9092", "sinkTest", new SimpleStringSchema());
 
         source3 = source3.map(new RichMapFunction<String, String>() {
             private transient Counter counter;

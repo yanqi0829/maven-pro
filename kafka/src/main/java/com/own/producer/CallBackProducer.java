@@ -5,6 +5,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -41,7 +42,7 @@ public class CallBackProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         long a = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("fistKafka1", 0, null, "send message kafka" + i), new Callback() {
+            producer.send(new ProducerRecord<String, String>("fistKafkaTest", 0, null, "send message kafka" + new Date().toLocaleString()), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
                     if (exception == null) {
