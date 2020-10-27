@@ -25,7 +25,7 @@ public class StreamWordCount {
                     collector.collect(new Tuple2<>(word, 1));
                 }
             }
-        });
+        }).keyBy(0).sum(1);
         result.print("WC");
         env.execute();
     }
