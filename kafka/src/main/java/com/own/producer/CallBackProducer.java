@@ -42,7 +42,7 @@ public class CallBackProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         long a = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("fistKafkaTest", 0, null, "send message kafka" + new Date().toLocaleString()), new Callback() {
+            producer.send(new ProducerRecord<String, String>("LXY", 0, null, "send message kafka" + new Date().toLocaleString()), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
                     if (exception == null) {

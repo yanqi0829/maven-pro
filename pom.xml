@@ -25,6 +25,7 @@
         <module>flink</module>
         <module>nio</module>
         <module>hadoop</module>
+        <module>open-source</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>

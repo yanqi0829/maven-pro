@@ -11,6 +11,7 @@
         <module name="account-email" />
         <module name="jvm" />
         <module name="kafka" />
+        <module name="opensource" />
         <module name="nio" />
         <module name="jdbc" />
         <module name="alipay" />

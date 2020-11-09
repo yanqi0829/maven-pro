@@ -179,4 +179,48 @@ public class HdfsTest {
     }
 
 
+    @Test
+    public void readFileSeek1() throws IOException, InterruptedException, URISyntaxException {
+
+        // 1 获取文件系统
+        Configuration configuration = new Configuration();
+        FileSystem fs = FileSystem.get(new URI("hdfs://hadoop002:9000"), configuration, "root");
+        // 2 获取输入流
+        FSDataInputStream fis = fs.open(new Path("/hadoop-2.7.2.tar.gz"));
+        // 3 创建输出流
+        FileOutputStream fos = new FileOutputStream(new File("e:/hadoop-2.7.2.tar.gz.part1"));
+        // 4 流的拷贝
+        byte[] buf = new byte[1024];
+        for (int i = 0; i < 1024 * 128; i++) {
+            fis.read(buf);
+            fos.write(buf);
+        }
+        // 5关闭资源
+        IOUtils.closeStream(fis);
+        IOUtils.closeStream(fos);
+        fs.close();
+    }
+
+    //下载第二块
+    @Test
+    public void readFileSeek2() throws IOException, InterruptedException, URISyntaxException {
+
+        // 1 获取文件系统
+        Configuration configuration = new Configuration();
+        FileSystem fs = FileSystem.get(new URI("hdfs://hadoop002:9000"), configuration, "root");
+        // 2 打开输入流
+        FSDataInputStream fis = fs.open(new Path("/hadoop-2.7.2.tar.gz"));
+        // 3 定位输入数据位置
+        fis.seek(1024 * 1024 * 128);
+        // 4 创建输出流
+        FileOutputStream fos = new FileOutputStream(new File("e:/hadoop-2.7.2.tar.gz.part2"));
+        // 5 流的对拷
+        IOUtils.copyBytes(fis, fos, configuration);
+        // 6 关闭资源
+        IOUtils.closeStream(fis);
+        IOUtils.closeStream(fos);
+        fs.close();
+    }
+
+
 }
