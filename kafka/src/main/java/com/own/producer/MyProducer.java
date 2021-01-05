@@ -1,6 +1,7 @@
 package com.own.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
@@ -27,7 +28,8 @@ public class MyProducer {
         //1.创建Kafka生产者的配置信息   参考ProducerConfig
         Properties props = new Properties();
         //2.指定连接的kafka集群，broker-list 以逗号分隔
-        props.put("bootstrap.servers", "localhost:9092");
+//        props.put("bootstrap.servers", "hadoop002:9092,hadoop003:9092,hadoop004:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "hadoop002:9092,hadoop003:9092,hadoop004:9092");
         //3、ACK应答级别
         props.put("acks", "all");
         //4.发送失败重试次数
