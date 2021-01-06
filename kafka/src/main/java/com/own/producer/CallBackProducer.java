@@ -42,26 +42,23 @@ public class CallBackProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         long a = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("LXY", 0, null, "send message kafka" + new Date().toLocaleString()), new Callback() {
-                @Override
-                public void onCompletion(RecordMetadata metadata, Exception exception) {
-                    if (exception == null) {
-                        System.out.println(metadata.partition() + "---" + metadata.offset());
-                    } else {
-                        exception.printStackTrace();
-                    }
+            producer.send(new ProducerRecord<String, String>("LXY", 0, null, "send message kafka" + new Date().toLocaleString()), (metadata, exception) -> {
+                if (exception == null) {
+                    System.out.println(metadata.partition() + "---" + metadata.offset());
+                } else {
+                    exception.printStackTrace();
                 }
             });
         }
         long b = System.currentTimeMillis();
-        System.out.println(b-a);
+        System.out.println(b - a);
         long c = System.currentTimeMillis();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {//**同步发送**（用的非常少，基本不用，一个分区并且使用同步发送，保证消息有序）
 //            producer.send(new ProducerRecord<String, String>("fistKafka1", 0, null, "0.10.2.1版本发送消息kafka1" + i));
 //            System.out.println(fistKafka.get().offset());
         }
         long d = System.currentTimeMillis();
-        System.out.println(d-c);
+        System.out.println(d - c);
         //关闭资源
         producer.close();
     }
