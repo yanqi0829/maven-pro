@@ -21,12 +21,12 @@
         <module>big-data</module>
         <module>jdbc</module>
         <module>jvm</module>
-        <module>kafka</module>
         <module>flink</module>
         <module>nio</module>
         <module>hadoop</module>
         <module>open-source</module>
         <module>zookeeper</module>
+        <module>zujian</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>
