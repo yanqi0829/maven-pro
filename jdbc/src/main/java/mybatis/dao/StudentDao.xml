@@ -16,6 +16,10 @@
     <select id="selectStudents" resultType="mybatis.domain.Student">
     select * from student
   </select>
+    <insert id="insertStudent">
+<!--    #{} 为占位符 对应Student中的属性名-->
+    insert into student values (#{id},#{name},#{email},#{age})
+    </insert>
 
 
 </mapper>

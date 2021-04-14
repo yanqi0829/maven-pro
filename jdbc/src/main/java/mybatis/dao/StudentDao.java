@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface StudentDao {
     public List<Student> selectStudents();
+
+    public int insertStudent(Student st);
 }

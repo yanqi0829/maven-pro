@@ -3,30 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!--    mybatis的主配置文件，主要定义了数据库的配置信息，sql映射文件的位置
--->
+    <!--    mybatis的主配置文件，主要定义了数据库的配置信息，sql映射文件的位置
+    -->
 
-<!--    环境配置：数据库连接信息 default 与一个environment的id一致， 即切换生产，测试环境  -->
-<environments default="local">
-<!--    environment：一个数据库信息的配置
-        id：自定义的唯一值，表示环境名称
-    -->
-    <environment id="local">
-<!--    transactionManager：表示mybatis事务类型    ···············以后不用
-        type：JDBC（表示使用jdbc中的Connection对象的commit，rollbacku做事务处理）
-    -->
-        <transactionManager type="JDBC"/>
-<!--  dataSource：数据源，连接数据库  ················以后不用    -->
-        <dataSource type="POOLED">
-            <property name="driver" value="com.mysql.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/books"/>
-            <property name="username" value="root"/>
-            <property name="password" value="root123"/>
-        </dataSource>
-    </environment>
-</environments>
-<!--    sql映射文件位置-->
-<mappers>
-    <mapper resource="mybatis/dao/StudentDao.xml"/>
-</mappers>
+    <!--    settings控制mybatis全局行为-->
+    <settings>
+        <!--        设置mybatis输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+    </settings>
+
+    <!--    环境配置：数据库连接信息 default 与一个environment的id一致， 即切换生产，测试环境  -->
+    <environments default="local">
+        <!--    environment：一个数据库信息的配置
+                id：自定义的唯一值，表示环境名称
+            -->
+        <environment id="local">
+            <!--    transactionManager：表示mybatis事务类型    ···············以后不用
+                    type：JDBC（表示使用jdbc中的Connection对象的commit，rollbacku做事务处理）
+                -->
+            <transactionManager type="JDBC"/>
+            <!--  dataSource：数据源，连接数据库  ················以后不用    -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/books"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--    sql映射文件位置-->
+    <mappers>
+        <mapper resource="mybatis/dao/StudentDao.xml"/>
+    </mappers>
 </configuration>

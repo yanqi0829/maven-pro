@@ -3,8 +3,18 @@ package mybatis.domain;
 public class Student {
     private Integer id;
     private String name;
-    private String eamil;
+    private String email;
     private Integer age;
+
+    public Student() {
+    }
+
+    public Student(Integer id, String name, String eamil, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.email = eamil;
+        this.age = age;
+    }
 
     public Integer getId() {return id;}
 
@@ -18,10 +28,10 @@ public class Student {
         this.name = name;
     }
 
-    public String getEamil() {return eamil;}
+    public String getEamil() {return email;}
 
     public void setEamil(String eamil) {
-        this.eamil = eamil;
+        this.email = eamil;
     }
 
     public Integer getAge() {return age;}
@@ -35,7 +45,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", eamil='" + eamil + '\'' +
+                ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
     }

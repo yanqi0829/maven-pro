@@ -25,5 +25,8 @@ public class MyBatisApp {
         //6.执行
         List<Student> list = sqlSession.selectList(sqlId);
         list.forEach(stu -> System.out.println(stu));
+        //7.关闭sqlSession
+        sqlSession.close();
     }
+
 }
