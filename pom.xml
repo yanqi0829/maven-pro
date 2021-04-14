@@ -33,6 +33,7 @@
 
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
+        <mybatis.version>3.2.7</mybatis.version>
     </properties>
 
     <!--    配置依赖的管理-->
@@ -87,6 +88,13 @@
                 <!--表示该依赖只对测试有效，主代码中import JUnit会编译错误，如果是默认值，对主程序
                 测试程序均有效-->
             </dependency>
+            <!--            mybatis依赖-->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.alipay.sdk</groupId>
                 <artifactId>alipay-easysdk</artifactId>

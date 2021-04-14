@@ -221,6 +221,28 @@ public class HdfsTest {
         IOUtils.closeStream(fos);
         fs.close();
     }
+@Test
+    public  void test() throws Exception{
 
+    System.setProperty("HADOOP_USER_NAME", "gzclhy");
+    Configuration conf = new Configuration();
+    conf.set("fs.defaultFS", "hdfs://gdHdfs");
+    conf.set("dfs.nameservices", "gdHdfs");
+    conf.set("dfs.ha.namenodes.gdHdfs", "nn1,nn2");
+    conf.set("dfs.namenode.rpc-address.gdHdfs.nn1", "10.124.202.103:8020");
+    conf.set("dfs.namenode.rpc-address.gdHdfs.nn2", "10.124.202.102:8020");
+    conf.set("dfs.client.failover.proxy.provider.gdHdfs", "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider");
 
+    FileSystem  fs = FileSystem.newInstance(conf);
+    // 2 获取输入流
+    FSDataInputStream fis = fs.open(new Path("/user/gzclhy/cust_file/20210223/success_KH202102231427108801.txt"));
+    // 3 获取输出流
+    FileOutputStream fos = new FileOutputStream(new File("e:/222.txt"));
+    // 4 流的对拷
+    IOUtils.copyBytes(fis, fos, conf);
+    // 5 关闭资源
+    IOUtils.closeStream(fos);
+    IOUtils.closeStream(fis);
+    fs.close();
+}
 }
