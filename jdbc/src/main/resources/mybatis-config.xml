@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+<!--    指定properties文件位置，从类路径根开始找-->
+    <properties resource="jdbc.properties"/>
+
     <!--    mybatis的主配置文件，主要定义了数据库的配置信息，sql映射文件的位置
     -->
 
@@ -23,17 +27,27 @@
                     type：JDBC（表示使用jdbc中的Connection对象的commit，rollbacku做事务处理）
                 -->
             <transactionManager type="JDBC"/>
-            <!--  dataSource：数据源，连接数据库  ················以后不用    -->
+            <!--  dataSource：数据源，连接数据库  ················以后不用
+                java体系中，规定实现了javax.sql.DataSource接口的都是数据源
+                    数据源表示Connection对象的
+              -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/books"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root123"/>
+                <property name="driver" value="${driverClass}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
     <!--    sql映射文件位置-->
     <mappers>
+        <!--    第一种方式-->
         <mapper resource="mybatis/dao/StudentDao.xml"/>
+        <!--    第二种方式  这个包中的所有xml文件一次性加载给mybatis
+                使用要求 ：①mapper文件名称和接口名称一样
+                         ②mapper文件和dao文件在同一目录下
+        -->
+<!--        <package name="mybatis.dao"/>-->
     </mappers>
+
 </configuration>

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MybatisTest {
@@ -44,5 +45,30 @@ public class MybatisTest {
         students.forEach(stu -> System.out.println(stu));
         Student student = studentDao.selectById(12);
         Student as = studentDao.selectMulitParam(12, "as");
+    }
+
+    @Test //动态sql if where
+    public void DynamicSql() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        System.out.println("studentDao=" + studentDao.getClass().getName());
+        //Mybatis 会根据sql信息 选择去调用sqlSession的哪个方法
+        Student student = new Student();
+//        student.setName("12");
+        student.setAge(2);
+        List<Student> students = studentDao.selectStudentIf(student);
+        students.forEach(stu -> System.out.println(stu));
+    }
+    @Test //动态sql foreach
+    public void DynamicSqlForeach() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        System.out.println("studentDao=" + studentDao.getClass().getName());
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(3);
+        list.add(2);
+        List<Student> students = studentDao.selectForeach(list);
+        students.forEach(stu -> System.out.println(stu));
     }
 }

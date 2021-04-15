@@ -13,15 +13,7 @@
             resultType 表示结果类型，值写类型的全限定名称
             -->
     <select id="selectStudents" resultType="mybatis.domain.Student">
-
-
-
-
                                     select * from student
-
-
-
-
     </select>
     <insert id="insertStudent">
         <!--    #{} 为占位符 对应Student中的属性名-->
@@ -34,7 +26,6 @@
         select * from student where id=#{dddddddd}
     </select>
 
-
     <select id="selectMulitParam" resultType="mybatis.domain.Student">
                  select * from student where id=#{myid} or name=#{myname}
     </select>
@@ -43,8 +34,8 @@
             使用简化的格式  #{属性名}， 类型通过反射可获取
     -->
     <select id="selectMulitObjetct" resultType="mybatis.domain.Student">
-                 select * from student where id=#{idParam,javaType=java.lang.Integer，jdbcType=INTEGER} or
-                 name=#{nameParam,javaType=java.lang.String，jdbcType=String}
+                 select * from student where id=#{idParam} or
+                 name=#{nameParam}
     </select>
 <!--··Map传参  使用#｛map 的key｝-->
     <select id="selectMulitMap" resultType="mybatis.domain.Student">
@@ -65,4 +56,41 @@
     <select id="selectAll" resultMap="studentMap">
                  select * from student
     </select>
+
+<!--    动态sql
+    <if test="使用参数java对象的属性值作为判断条件">
+-->
+    <select id="selectStudentIf" resultType="mybatis.domain.Student">
+        select * from student
+<!--        <where>
+用来包含<if>,当多个<if>有一个成立，<where>会自动增加一个where，并去掉if中多余的and，or-->
+        <where>
+        <if test="name !=null and name!=''">
+            name=#{name}
+        </if>
+        <if test="age>0">
+          and  age>#{age}
+        </if>
+        </where>
+    </select>
+<!--代码片段-->
+    <sql id="stuParam">
+      select   name,age,id,email from student
+    </sql>
+
+<!--
+collection 表示接口中方法的参数的类型  数组：array  list集合：list
+item: 自定义的array或list的成员变量
+open： 循环开始时字符
+close： 循环结束时字符
+separator：成员之间分隔符
+-->
+    <select id="selectForeach" resultType="mybatis.domain.Student">
+         <include refid="stuParam"/>   where id in
+        <foreach collection="list" item="myid" open="(" close=")" separator=",">
+                #{myid}
+        </foreach>
+    </select>
+
+
 </mapper>

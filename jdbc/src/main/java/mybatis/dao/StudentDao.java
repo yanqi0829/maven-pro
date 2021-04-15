@@ -18,6 +18,11 @@ public interface StudentDao {
 
     public Student selectMulitObjetct(ParamStu st);
 
-    public Student selectMulitMap(Map<String,Object> map);
+    public Student selectMulitMap(Map<String, Object> map);
+
+    //动态sql使用对象做入参
+    public List<Student> selectStudentIf(Student st);
+
+    public List<Student> selectForeach(List<Integer> list);
 
 }
