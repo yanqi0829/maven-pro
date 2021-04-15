@@ -9,17 +9,41 @@
 -->
 
 <mapper namespace="mybatis.dao.StudentDao">
-
-<!--    id表示执行sql的唯一标示，要求使用接口中的方法名
-        resultType 表示结果类型，值写类型的全限定名称
-        -->
+    <!--    id表示执行sql的唯一标示，要求使用接口中的方法名
+            resultType 表示结果类型，值写类型的全限定名称
+            -->
     <select id="selectStudents" resultType="mybatis.domain.Student">
-    select * from student
-  </select>
+
+
+
+
+                                    select * from student
+
+
+
+
+    </select>
     <insert id="insertStudent">
-<!--    #{} 为占位符 对应Student中的属性名-->
-    insert into student values (#{id},#{name},#{email},#{age})
+        <!--    #{} 为占位符 对应Student中的属性名-->
+        insert into student values (#{id},#{name},#{email},#{age})
     </insert>
+    <!--  parameterType:的值是java数据类型的全限定名称或mybatis定义的别名
+           parameterType不是强制的，mybatis通过反射机制可以发现接口参数的类型，可以不写 -->
+    <select id="selectById" resultType="mybatis.domain.Student" parameterType="Integer">
+        <!-- mapper文件获取简单类型（基本类型和String）的一个参数的值，使用#{任意字符}-->
+        select * from student where id=#{dddddddd}
+    </select>
 
 
+    <select id="selectMulitParam" resultType="mybatis.domain.Student">
+                 select * from student where id=#{myid} or name=#{myname}
+    </select>
+    <!--    多个参数，使用java对象的属性值，作为参数实际值
+            #｛属性名,javaType=类型名称，jdbcType=数据类型｝ 用的少
+            使用简化的格式  #{属性名}， 类型通过反射可获取
+    -->
+    <select id="selectMulitObjetct" resultType="mybatis.domain.Student">
+                 select * from student where id=#{idParam,javaType=java.lang.Integer，jdbcType=INTEGER} or
+                 name=#{nameParam,javaType=java.lang.String，jdbcType=String}
+    </select>
 </mapper>

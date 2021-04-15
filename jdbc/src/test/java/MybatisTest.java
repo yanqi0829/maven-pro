@@ -42,5 +42,7 @@ public class MybatisTest {
         //Mybatis 会根据sql信息 选择去调用sqlSession的哪个方法
         List<Student> students = studentDao.selectStudents();
         students.forEach(stu -> System.out.println(stu));
+        Student student = studentDao.selectById(12);
+        Student as = studentDao.selectMulitParam(12, "as");
     }
 }
