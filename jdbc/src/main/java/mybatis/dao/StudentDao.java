@@ -25,4 +25,6 @@ public interface StudentDao {
 
     public List<Student> selectForeach(List<Integer> list);
 
+    public List<Student> selectAll();
+
 }

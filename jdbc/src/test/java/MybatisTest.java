@@ -1,3 +1,4 @@
+import com.github.pagehelper.PageHelper;
 import mybatis.dao.StudentDao;
 import mybatis.domain.Student;
 import mybatis.utils.MyBatisUtils;
@@ -48,7 +49,7 @@ public class MybatisTest {
     }
 
     @Test //动态sql if where
-    public void DynamicSql() {
+    public void dynamicSql() {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
         System.out.println("studentDao=" + studentDao.getClass().getName());
@@ -59,8 +60,9 @@ public class MybatisTest {
         List<Student> students = studentDao.selectStudentIf(student);
         students.forEach(stu -> System.out.println(stu));
     }
+
     @Test //动态sql foreach
-    public void DynamicSqlForeach() {
+    public void dynamicSqlForeach() {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
         System.out.println("studentDao=" + studentDao.getClass().getName());
@@ -69,6 +71,16 @@ public class MybatisTest {
         list.add(3);
         list.add(2);
         List<Student> students = studentDao.selectForeach(list);
+        students.forEach(stu -> System.out.println(stu));
+    }
+
+    @Test //pagehelper 分页
+    public void pageHelper() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        //pageNum  第几页 从1开始,  pageSize 显示几行数据
+        PageHelper.startPage(2, 2);
+        List<Student> students = studentDao.selectAll();
         students.forEach(stu -> System.out.println(stu));
     }
 }
