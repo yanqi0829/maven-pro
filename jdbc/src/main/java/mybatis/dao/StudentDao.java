@@ -5,6 +5,7 @@ import mybatis.domain.Student;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentDao {
     public List<Student> selectStudents();
@@ -16,5 +17,7 @@ public interface StudentDao {
     public Student selectMulitParam(@Param("myid") Integer id, @Param("myname") String name);
 
     public Student selectMulitObjetct(ParamStu st);
+
+    public Student selectMulitMap(Map<String,Object> map);
 
 }

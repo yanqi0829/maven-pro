@@ -46,4 +46,23 @@
                  select * from student where id=#{idParam,javaType=java.lang.Integer，jdbcType=INTEGER} or
                  name=#{nameParam,javaType=java.lang.String，jdbcType=String}
     </select>
+<!--··Map传参  使用#｛map 的key｝-->
+    <select id="selectMulitMap" resultType="mybatis.domain.Student">
+                 select * from student where id=#{mapId} or
+                 name=#{mapName}
+    </select>
+<!--    使用resultMap
+        1.定义 resultMap
+        2.在select中使用 1定义的resultMap
+-->
+    <resultMap id="studentMap" type="mybatis.domain.Student" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="studentMap">
+                 select * from student
+    </select>
 </mapper>
