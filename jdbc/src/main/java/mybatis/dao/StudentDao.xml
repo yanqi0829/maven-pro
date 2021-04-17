@@ -48,6 +48,7 @@
 -->
     <resultMap id="studentMap" type="mybatis.domain.Student" >
         <id column="id" property="id" jdbcType="INTEGER" />
+<!--        可以哪个属性不一样  就映射哪个-->
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="age" property="age" jdbcType="INTEGER" />
         <result column="email" property="email" jdbcType="VARCHAR" />

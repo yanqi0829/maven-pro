@@ -15,9 +15,7 @@
     </dependencies>
     <!--    配置聚合-->
     <modules>
-
         <module>account-email</module>
-        <module>alipay</module>
         <module>big-data</module>
         <module>jdbc</module>
         <module>jvm</module>
@@ -110,6 +108,13 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>2.8.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.2</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -10,15 +10,17 @@
         <module name="big-data" />
         <module name="account-email" />
         <module name="jvm" />
-        <module name="kafka" />
+        <module name="zujian" />
         <module name="opensource" />
         <module name="nio" />
         <module name="zookeeper" />
         <module name="jdbc" />
-        <module name="alipay" />
         <module name="hadoop" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="alipay" target="1.8" />
+      <module name="kafka" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

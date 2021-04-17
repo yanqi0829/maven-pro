@@ -19,3 +19,13 @@ A
 zookeeper/pom.xml,5\4\5460d1cc8fdf7311152915a94fb8ae36cd84fe09
 Z
 *zookeeper/src/main/java/TestZookeeper.java,4\5\458c9bf5819c705d2c96bbb90592d65f71094c56
+J
+open-source/opensource.iml,4\1\411fb7e45f0633404420ca58c23ba32e4c5201a2
+C
+open-source/pom.xml,2\f\2fae0c9d160efc53e208fdd6e4f8fb416ddfe44c
+W
+'hadoop/src/main/java/hdfs/HdfsTest.java,9\a\9a550a861cdd05aa26645e753ac1e771af621f67
+X
+(src/main/java/helloworld/HelloWorld.java,c\7\c730ec2644427e8c5593ed50a39b6391b3719a79
+>
+zujian/pom.xml,d\f\dfd1ecc1ef05cb7c1e2a2b77c15eeec69ebc0b7e
