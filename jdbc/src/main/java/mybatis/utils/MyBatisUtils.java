@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public class MyBatisUtils {
+    //官网：SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例。
     private static SqlSessionFactory sqlSessionFactory = null;
 
     static {
@@ -20,6 +21,7 @@ public class MyBatisUtils {
             inputStream = Resources.getResourceAsStream(config);
         } catch (IOException e) {
         }
+        //官网：一旦创建了 SqlSessionFactory，就不再需要它了
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 

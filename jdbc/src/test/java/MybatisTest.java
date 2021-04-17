@@ -24,7 +24,7 @@ public class MybatisTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         //4.获取 sqlSession对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        //5.指定要执行的sql语句的标识，namespace+"."+ 标签id
+        //5.指定要执行的sql语句的标识，namespace+"."+ 标签id  对应接口+方法名
         String sqlId = "mybatis.dao.StudentDao" + "." + "insertStudent";
         //6.执行
         int num = sqlSession.insert(sqlId, new Student(33, "asd", "@", 34));
