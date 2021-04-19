@@ -83,4 +83,39 @@ public class MybatisTest {
         List<Student> students = studentDao.selectAll();
         students.forEach(stu -> System.out.println(stu));
     }
+
+    @Test //一级缓存
+    /*查询相同数据两次 返回同一个student
+     * 但是，在sqlsession中增删改数据，会使缓存失效
+     * */
+    public void cache1() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        System.out.println("studentDao=" + studentDao.getClass().getName());
+        Student student1 = studentDao.selectById(12);
+        Student student2 = studentDao.selectById(12);
+        System.out.println(student1 == student2);
+        sqlSession.close();
+    }
+
+    @Test //二级缓存
+    /*
+     * */
+    public void cache2() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        SqlSession sqlSession1 = MyBatisUtils.getSqlSession();
+
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        Student student = studentDao.selectById(12);
+        sqlSession.close();
+
+        StudentDao studentDao1 = sqlSession1.getMapper(StudentDao.class);
+        StudentDao studentDao2 = sqlSession1.getMapper(StudentDao.class);
+        Student student1 = studentDao1.selectById(12);
+        System.out.println(student == student1);//false
+        Student student2 = studentDao1.selectById(123);
+        Student student4 = studentDao2.selectById(4);
+        Student student3 = studentDao1.selectById(123);
+        sqlSession1.close();
+    }
 }

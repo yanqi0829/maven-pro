@@ -9,6 +9,8 @@
 -->
 <!--namespace=绑定一个对应的Dao接口-->
 <mapper namespace="mybatis.dao.StudentDao">
+    <cache/>  <!--开启二级缓存-->
+
     <!--    id表示执行sql的唯一标示，要求使用接口中的方法名
             resultType 表示结果类型，值写类型的全限定名称
             -->
