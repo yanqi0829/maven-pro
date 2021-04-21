@@ -20,11 +20,11 @@
         <module>jdbc</module>
         <module>jvm</module>
         <module>flink</module>
-        <module>nio</module>
         <module>hadoop</module>
         <module>open-source</module>
         <module>zookeeper</module>
         <module>zujian</module>
+        <module>springMVC</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>
@@ -56,6 +56,11 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
