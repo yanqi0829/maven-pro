@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    处理器映射器 开发时用注解代替-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+    <!--    处理器适配器  开发时用注解代替-->
+    <bean class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter"/>
+    <!--  ViewResolver 定义视图文件解析
+        配置视图解析器 ,跳转到指定的页面 参数： 文件所在目录，文件后缀
+        可以使用模版引擎代替   Thymeleaf Freemarker
+     -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--    BeanNameUrlHandlerMapping：bean-->
+    <bean id="hello" class="controller.HelloController"></bean>
+</beans>
