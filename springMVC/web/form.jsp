@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/hello" method="post">
+<form action="<%=request.getContextPath()%>/hello" method="post">
     <input type="text" name="name">
     <input type="submit">
 </form>

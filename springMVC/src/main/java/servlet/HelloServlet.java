@@ -20,6 +20,7 @@ public class HelloServlet extends HttpServlet {
 
         //3视图转发或者重定向
         req.getRequestDispatcher("WEB-INF/jsp/test.jsp").forward(req,resp);//转发
+//        resp.sendRedirect(""); 重定向
     }
 
     @Override
