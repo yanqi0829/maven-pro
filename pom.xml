@@ -25,6 +25,7 @@
         <module>zookeeper</module>
         <module>zujian</module>
         <module>springMVC</module>
+        <module>SSM</module>
     </modules>
     <packaging>pom</packaging>
     <name>parent</name>
