@@ -1,6 +1,7 @@
 package service;
 
 import dao.BookMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import pojo.Books;
 
 import java.util.List;

@@ -10,7 +10,7 @@
         <!--        关联一个springMVC配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-mvc.xml</param-value>
+            <param-value>classpath:applicationContext.xml</param-value>
         </init-param>
         <!--        启动级别：1-->
         <load-on-startup>1</load-on-startup>
