@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pojo.Books;
 import service.BookService;
 
+import java.awt.print.Book;
 import java.util.List;
 
 @Controller
@@ -23,4 +24,18 @@ public class BookController {
         model.addAttribute("list", bookList);
         return "allBook";
     }
+
+    //跳转到增加书籍页面
+    @RequestMapping("/toAddBook")
+    public String toAddPage() {
+        return "addBook";
+    }
+
+    //添加书籍的请求
+    @RequestMapping("/addBook")
+    public String toAddBook(Books books) {
+        bookService.addBook(books);
+        return "redirect:/book/allBooks";
+    }
+
 }
