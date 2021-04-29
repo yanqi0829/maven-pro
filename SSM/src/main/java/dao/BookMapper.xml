@@ -11,7 +11,7 @@
             delete  from books where id=#{bookId}
     </delete>
     <update id="updateBook" parameterType="pojo.Books">
-             update books set bookName=#{bookName},price=#{price} where id=#{id}
+             update books set bookName=#{bookName},price=#{price},authorId=#{authorId} where id=#{id}
     </update>
     <select id="queryBook" resultType="pojo.Books">
              select * from books where id=#{id}

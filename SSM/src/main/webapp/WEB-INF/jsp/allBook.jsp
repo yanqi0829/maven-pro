@@ -34,6 +34,7 @@
                     <th>名称</th>
                     <th>价格</th>
                     <th>作者</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,12 @@
                         <td>${book.bookName}</td>
                         <td>${book.price}</td>
                         <td>${book.authorId}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/book/toUpdate?id=${book.id}">修改</a>
+                            &nbsp;|&nbsp;
+                            <a href="${pageContext.request.contextPath}/book/deleteBook?id=${book.id}">删除</a>
+                            
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

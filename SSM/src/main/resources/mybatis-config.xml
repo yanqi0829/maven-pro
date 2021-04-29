@@ -4,12 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--配置数据源，交给Spring去做-->
-
+    <settings>
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
 
     <mappers>
-        <!--    第一种方式-->
         <mapper resource="dao/BookMapper.xml"/>
     </mappers>
-
 
 </configuration>

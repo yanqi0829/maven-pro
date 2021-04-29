@@ -18,6 +18,7 @@ public class BookController {
     @Qualifier("bookServiceImpl")
     private BookService bookService;
 
+    //查询全部书籍，并返回到一个书籍展示页面
     @RequestMapping("/allBooks")
     public String list(Model model) {
         List<Books> bookList = bookService.queryAllBooks();
@@ -27,7 +28,7 @@ public class BookController {
 
     //跳转到增加书籍页面
     @RequestMapping("/toAddBook")
-    public String toAddPage() {
+    public String toAddPaper() {
         return "addBook";
     }
 
@@ -38,4 +39,27 @@ public class BookController {
         return "redirect:/book/allBooks";
     }
 
+    //跳转到更新书籍页面
+    @RequestMapping("/toUpdate")
+    public String toUpdatePaper(int id, Model model) {
+        Books books = bookService.queryBook(id);
+        model.addAttribute("books", books);
+        return "updateBook";
+    }
+
+    //更新书籍请求
+    @RequestMapping("/updateBook")
+    public String updateBook(Books books) {
+        int i = bookService.updateBook(books);
+        System.out.println("更新书籍" + books);
+        return "redirect:/book/allBooks";
+    }
+
+    //删除书籍请求
+    @RequestMapping("/deleteBook")
+    public String deleteBook(int id) {
+        int i = bookService.deleteBookById(id);
+        System.out.println("删除书籍" + id);
+        return "redirect:/book/allBooks";
+    }
 }
