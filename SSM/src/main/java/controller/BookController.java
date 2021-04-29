@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pojo.Books;
 import service.BookService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.awt.print.Book;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -61,5 +63,16 @@ public class BookController {
         int i = bookService.deleteBookById(id);
         System.out.println("删除书籍" + id);
         return "redirect:/book/allBooks";
+    }
+
+    //处理ajax请求
+    @RequestMapping("/a1")
+    public void a1(String name, HttpServletResponse response) throws IOException {
+        System.out.println(name);
+        if ("admin".equals(name)) {
+            response.getWriter().print(true);
+        } else {
+            response.getWriter().print(false);
+        }
     }
 }
