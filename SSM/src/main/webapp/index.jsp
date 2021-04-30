@@ -20,8 +20,9 @@
 
         }
     </style>
-<%--    <script src="/static/js/jquery.js"></script>--%>
-    　　<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <%--    <script src="/static/js/jquery.js"></script>--%>
+    　　
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
         function a() {
             $.post({
@@ -45,5 +46,6 @@
 <%--失去焦点的时候，发起一个请求到后台--%>
 <h3>ajax请求</h3>
 用户名:<input type="text" id="username" onblur="a()">
+<span id="usernameInfo"></span>
 </body>
 </html>

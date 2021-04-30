@@ -23,7 +23,6 @@
         <module>hadoop</module>
         <module>open-source</module>
         <module>zookeeper</module>
-        <module>zujian</module>
         <module>springMVC</module>
         <module>SSM</module>
     </modules>
