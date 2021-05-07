@@ -1,4 +1,19 @@
-#yaml \u914D\u7F6E\u6709\u7A7A\u683C  \u65E0\u7A7A\u683C \u4E0D\u9AD8\u91CF\u663E\u793A
-#\u53EF\u4EE5\u914D\u7F6E\u5BF9\u8C61\u548C\u6570\u636E
-server:
-  port: 8081
+#对象
+person:
+  name: Lucy
+  age: 14
+  happy: false
+  birth: 2021/05/01
+  maps: {k1: v1,k2: v2}
+  lists:
+    -eat
+    -walk
+    -sing
+  dog:
+    name: 旺财
+    age: 2
+spring:
+  profiles:
+    active: pro
+#查看哪些自动配置类 生效或没有生效
+debug: true

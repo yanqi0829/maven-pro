@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-    </properties>
+   </properties>
 
     <!--spring-boot-starter：所有的springboot依赖以此开头-->
     <dependencies>
@@ -30,12 +30,25 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--单元测试        -->
+        <!--单元测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--引入jquery 访问测试：http://localhost:8082/webjars/jquery/3.6.0/jquery.js-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.6.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
