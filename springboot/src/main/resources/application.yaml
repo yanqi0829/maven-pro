@@ -16,4 +16,4 @@ spring:
   profiles:
     active: pro
 #查看哪些自动配置类 生效或没有生效
-debug: true
+#debug: true
