@@ -15,5 +15,9 @@ person:
 spring:
   profiles:
     active: pro
+    #关闭模版引擎缓存
+  thymeleaf:
+    cache: false
 #查看哪些自动配置类 生效或没有生效
 #debug: true
+
