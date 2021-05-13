@@ -18,6 +18,9 @@ spring:
     #关闭模版引擎缓存
   thymeleaf:
     cache: false
+    #国际化设置
+  messages:
+    basename: i18n.login
 #查看哪些自动配置类 生效或没有生效
 #debug: true
 
