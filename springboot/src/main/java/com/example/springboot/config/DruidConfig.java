@@ -13,6 +13,11 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DruidConfig {
+    /*
+    * @Bean相对来说就更加灵活了，它可以独立加在方法上，按需注册到spring容器，而且如果你要用到第三方类库里面某个方法的时候，
+    * 你就只能用@Bean把这个方法注册到spring容器，因为用@Component你需要配置组件扫描到这个第三方类路径而且还要在别人源代码加上这个注解，
+    * 很明显是不现实的。
+    * */
     @ConfigurationProperties(prefix = "spring.datasource")
     @Bean  //将自定义的DruidDataSource加到容器中，不用springboot创建
     public DataSource druidDataSource() {
